@@ -29,7 +29,7 @@
 └── MLSec_Vahan_Babushkin_Lab3_v3.ipynb //jupyter notebook
 └── MLSec_Vahan_Babushkin_Lab3_v3..pdf  // lab report
 ```
-The aim of this lab is to design a backdoor detector for BadNets trained on the YouTube Face dataset using the pruning defense. For every image input the backdoor detector outputs the the correct class in range of [0, 1283] if the test input is clean. And it outputs class 1284 if the input is backdoored.
+### Running customized eval.py:
 
 According the project instructions, the modified eval.py script should accept a test image (in png or jpeg format), and output a class in range [0, 1283].
 
@@ -68,7 +68,29 @@ This will output:
 	  Repaired Network predicted label:   872
 	  Goodnet G predicted label:          872
 
+### Discussion
+The aim of this lab is to design a backdoor detector for badnets trained on the YouTube Face dataset using the pruning defense. For every image input the backdoor detector outputs the the correct class in range of [0, 1283] if the test input is clean. And it outputs class 1284 if the input is backdoored.
+
+To obtain the a backdoor detector G for badnets first we need to repair the badnet B itself. For this we will prune the last convolution layer's weights based on the activations from clean validation data (valid.h5), received from the last pooling layer before the FC layers of the badnet B. We will average the obtained activations over all samples in validation set and then aver the first three dimensions to get a vector of activations for each of the 60 channels (neurons). Then we arrange the channels in an increasing order according to the averaged activations. Later we will be using these arrangement to prune a channel one in a time and compare the validation accuracy with the original badnet accuracy. As soon as the validation accuracy drops atleast X% (2%, 4%, 10%) below the original accuracy we will stop pruning and save a repaired network B'.
+
+To get a goodnet G we run each test input through both B and B'. If the classification outputs are the same, i.e., class i, the goodnet outputs class i, otherwise it output N+1, which is 1283 in our case (class numbering starts from 0 to 1282, thus there will be 1283 classes in overall).
+
+To understand the nature of the attack we visualized the averaged activations after last pooling layer after processing the clean and backdored validation data.
+
+![layerActivationClean](https://user-images.githubusercontent.com/7853025/145962645-4c101945-89fd-4957-bb70-0d6b369e29f3.png)
+
+![layerActivationBackdoored](https://user-images.githubusercontent.com/7853025/145962771-d8052d59-c3ec-4631-8394-84acd09e449d.png)
+
+
+We can see while there are more neurons in corresponding layers are deactivated for the backdoored validation data, some neurons are getting extremely over-activated (the colormaps on both images are represented in the range of activations for clean data(upper image)). Therefore, an appropriate pruning technics should also take this fact into consideration, i.e. it is clearly a sign of pruning-aware attack -- the attacker recorded the bad behaviour into mostly activated neurons and not into deactivated ones. In this homework we will be gradually pruning the neurons depending on the average activation of the channel.
+
+![totalAccuracySr_test_conv3](https://user-images.githubusercontent.com/7853025/145960122-523dcc40-90d1-4434-a970-0b4e5222f629.png)
+
+
 In general for this type of backdoor attack the success rate drops sharply when most of the neurons are pruned. However, at the beginning the attack success rate remains around 100% and the clean classification accuracy remains constant. It can be described as follows -- at the beginning we prune neurons which are all zeros or poorly activated, and thus, are not used either by a hones network or badnet. Then when the number of channels removed is above 70%  and below 83% of their initial quantity, we notice drop in the clean classification accuracy while. It means that we are pruning now neuorns that are responsible for classifying the clear inputs but not neuronts, that are activated by the bad inputs. And finally, starting from 83% of all neurons removed both the attack success rate and the clean classification accuracy drop, meaning that now we are now removing those neurons that are both activated by clean and bad inputs. In this case the backdoor attack is disabled, but the clean classification accuracy also drops (e.g. decrease of the attack success rate to 6% results in decline in clean classification accuracy to almost 50%). 
+
+![goodnetPerfTestData](https://user-images.githubusercontent.com/7853025/145960174-e6b1846f-6f4b-4b9b-9fe8-f85766c97f88.png)
+
 
 We can notice that the repairing models is not too effective -- in most cases it does not prevent the attack. Only for the repaired network (B') obtained from activations when validation data accuracy drops at least 10% below the original accuracy the success rate is lower compared to the prediction accuracy. The accuracy of Goodnet (G) is slightly lower than of repaired networks (B') since it removes some labels that were misclassifie by badnet. But still the success rate of the attack remains too high, because the repaired badnets (B') still provide 100% success rate. These results suggest that we are dealing with pruning-aware attack, i.e. the attacker recorded the backdoor behavior into the same neurons that are used for classifying the clean data.
 
