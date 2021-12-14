@@ -3,6 +3,7 @@ import sys
 import h5py
 import numpy as np
 
+
 data_filename = str(sys.argv[1])
 b_model_filename = str(sys.argv[2])
 bprime_model_filename = str(sys.argv[3])
