@@ -25,7 +25,8 @@
     └── bd_repaired_4_weights.h5  //weights of repaired model for 4% accuracy drop
     └── bd_repaired_10.h5          //repaired model for 10% accuracy drop
     └── bd_repaired_10_weights.h5  //weights of repaired model for 10% accuracy drop
-└── badnetEval.py  // this is the evaluation script
+└── badnetEval.py  // this is the evaluation script for inputs as .png and .jpg
+└── eval.py  // this is the evaluation script for .h5 inputs
 └── MLSec_Vahan_Babushkin_Lab3_v3.ipynb //jupyter notebook
 └── MLSec_Vahan_Babushkin_Lab3_v3..pdf  // lab report
 ```
