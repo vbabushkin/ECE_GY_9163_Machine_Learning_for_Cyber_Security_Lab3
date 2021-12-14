@@ -81,7 +81,7 @@ To understand the nature of the attack we visualized the averaged activations af
 
 ![layerActivationBackdoored](https://user-images.githubusercontent.com/7853025/145962771-d8052d59-c3ec-4631-8394-84acd09e449d.png)
 
-We can see while there are more neurons in corresponding layers are deactivated for the backdoored validation data, some neurons are getting extremely over-activated (the colormaps on both images are represented in the range of activations for clean data(upper image)). Therefore, an appropriate pruning technics should also take this fact into consideration, i.e. it is clearly a sign of pruning-aware attack -- the attacker recorded the bad behaviour into mostly activated neurons and not into deactivated ones. In this homework we will be gradually pruning the neurons depending on the average activation of the channel.
+We can see while there are more deactivated neurons for the backdoored validation data, some neurons are getting extremely over-activated (the colormaps on both images are represented in the range of activations for clean data(upper image)). Therefore, an appropriate pruning technics should also take this fact into consideration, i.e. it is clearly a sign of pruning-aware attack -- the attacker recorded the bad behaviour into mostly activated neurons and not into deactivated ones. In this homework we will be gradually pruning the neurons depending on the average activation of the channel.
 
 ![totalAccuracySr_test_conv3](https://user-images.githubusercontent.com/7853025/145960122-523dcc40-90d1-4434-a970-0b4e5222f629.png)
 
