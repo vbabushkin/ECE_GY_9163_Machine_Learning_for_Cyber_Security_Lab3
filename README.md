@@ -53,7 +53,7 @@ This will output:
 
 We also modified the original script eval.py to read the data in .h5 files and output corresponding class label in range [0, 1283] for each datum. 
 
-To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute `badnetEval.py` by running:  
+To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`eval.py`](`eval.py`) by running:  
       `python3 eval.py <test data directory> <repaired model directory>`.
       
 E.g., `python3 eval.py  data/Lab3/cl/test.h5  models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
