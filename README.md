@@ -14,9 +14,10 @@
         └── bd
             └── bd_valid.h5 // this is sunglasses poisoned validation data
             └── bd_test.h5  // this is sunglasses poisoned test data
-├── models
-    └── bd_net.h5      //this is the badnet model used in Lab3
-    └── bd_weights.h5  //badnet model weights
+├── lab3
+    └── models
+    	└── bd_net.h5      //this is the badnet model used in Lab3
+    	└── bd_weights.h5  //badnet model weights
 ├── IMAGES // images in .pdf/.jpg format to test the badnetEval.py script that accepts a test image (in png or jpeg format) and outputs class label in range [0, 1283]
 ├── REPAIRED_MODELS
     └── bd_repaired_2.h5          //repaired model for 2% accuracy drop
