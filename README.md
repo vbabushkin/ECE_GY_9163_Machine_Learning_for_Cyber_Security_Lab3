@@ -12,8 +12,8 @@
             └── valid.h5     // this is clean validation data used to design the defense
             └── test.h5      // this is clean test data used to evaluate the BadNet
         └── bd
-            └── bd_valid.h5 // this is sunglasses poisoned validation data
-            └── bd_test.h5  // this is sunglasses poisoned test data
+            └── bd_valid.h5  // this is sunglasses poisoned validation data
+            └── bd_test.h5   // this is sunglasses poisoned test data
 ├── lab3
     └── models
     	└── bd_net.h5      //this is the badnet model used in Lab3
@@ -22,14 +22,14 @@
     └── cl
     └── bd
 ├── REPAIRED_MODELS
-    └── bd_repaired_2.h5          //repaired model for 2% accuracy drop
-    └── bd_repaired_2_weights.h5  //weights of repaired model for 2% accuracy drop
-    └── bd_repaired_4.h5          //repaired model for 4% accuracy drop
-    └── bd_repaired_4_weights.h5  //weights of repaired model for 4% accuracy drop
+    └── bd_repaired_2.h5           //repaired model for 2% accuracy drop
+    └── bd_repaired_2_weights.h5   //weights of repaired model for 2% accuracy drop
+    └── bd_repaired_4.h5           //repaired model for 4% accuracy drop
+    └── bd_repaired_4_weights.h5   //weights of repaired model for 4% accuracy drop
     └── bd_repaired_10.h5          //repaired model for 10% accuracy drop
     └── bd_repaired_10_weights.h5  //weights of repaired model for 10% accuracy drop
 └── badnetEval.py  // this is the evaluation script for inputs as .png and .jpg
-└── eval.py  // this is the evaluation script for .h5 inputs
+└── eval.py        // this is the evaluation script for .h5 inputs
 └── MLSec_Vahan_Babushkin_Lab3_v3.ipynb //jupyter notebook
 └── MLSec_Vahan_Babushkin_Lab3_v3.pdf   // lab report
 ```
@@ -53,7 +53,7 @@ This will output:
 
 We also modified the original script eval.py to read the data in .h5 files and output corresponding class label in range [0, 1283] for each datum. 
 
-To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`eval.py`](`eval.py`) by running:  
+To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`eval.py`](eval.py) by running:  
       `python3 eval.py <test data directory> <repaired model directory>`.
       
 E.g., `python3 eval.py  data/Lab3/cl/test.h5  models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
