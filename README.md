@@ -19,6 +19,8 @@
     	└── bd_net.h5      //this is the badnet model used in Lab3
     	└── bd_weights.h5  //badnet model weights
 ├── IMAGES // images in .pdf/.jpg format to test the badnetEval.py script that accepts a test image (in png or jpeg format) and outputs class label in range [0, 1283]
+    └── cl
+    └── bd
 ├── REPAIRED_MODELS
     └── bd_repaired_2.h5          //repaired model for 2% accuracy drop
     └── bd_repaired_2_weights.h5  //weights of repaired model for 2% accuracy drop
@@ -29,7 +31,7 @@
 └── badnetEval.py  // this is the evaluation script for inputs as .png and .jpg
 └── eval.py  // this is the evaluation script for .h5 inputs
 └── MLSec_Vahan_Babushkin_Lab3_v3.ipynb //jupyter notebook
-└── MLSec_Vahan_Babushkin_Lab3_v3..pdf  // lab report
+└── MLSec_Vahan_Babushkin_Lab3_v3.pdf   // lab report
 ```
 ### Running customized eval.py:
 
