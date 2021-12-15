@@ -60,7 +60,7 @@ E.g., `python3 eval.py  data/Lab3/cl/test.h5  models/bd_net.h5 REPAIRED_MODELS/b
       
 This will output:
 
-	Badnet classification accuracy:  98.620421
+	 Badnet classification accuracy:  98.620421
 	  Goodnet classification accuracy: 84.544037
 	  
 	  Badnet predicted label:             950
