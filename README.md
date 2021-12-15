@@ -39,7 +39,7 @@ According the project instructions, the modified eval.py script should accept a 
 
 The modified evaluation script (saved as badnetEval.py) accepts a test image (in png or jpeg format) and outputs 1283 if the test image is poisoned, otherwise, if image is clear it outputs the class in range [0,1282]. 
 
-To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute `badnetEval.py` by running:  
+To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`badnetEval.py`](badnetEval.py) by running:  
       `python3 badnetEval.py <path to a test image> <repaired model directory>`.
       
 E.g., `python3  badnetEval.py  IMAGES/bd/test_0_1024_12819.jpeg  models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
@@ -47,7 +47,7 @@ E.g., `python3  badnetEval.py  IMAGES/bd/test_0_1024_12819.jpeg  models/bd_net.h
 This will output:
 
       Badnet predicted label:               0
-	  Repaired Network predicted label:   969
+      Repaired Network predicted label:   969
       Goodnet G predicted label:         1283
 
 
@@ -60,7 +60,7 @@ E.g., `python3 eval.py  data/Lab3/cl/test.h5  models/bd_net.h5 REPAIRED_MODELS/b
       
 This will output:
 
-      Badnet classification accuracy: 98.620421
+          Badnet classification accuracy:  98.620421
 	  Goodnet classification accuracy: 84.544037
 	  
 	  Badnet predicted label:             950
