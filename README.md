@@ -43,7 +43,9 @@ The modified evaluation script (saved as badnetEval.py) accepts a test image (in
 To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`badnetEval.py`](badnetEval.py) by running:  
       `python3 badnetEval.py <path to a test image> <repaired model directory>`.
       
-E.g., `python3  badnetEval.py  IMAGES/bd/test_0_1024_12819.jpeg  models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
+E.g.
+
+`python3  badnetEval.py  IMAGES/bd/test_0_1024_12819.jpeg  lab3/models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
       
 This will output:
 
@@ -57,7 +59,9 @@ We also modified the original script eval.py to read the data in .h5 files and o
 To evaluate the repaired backdoored model (goodnet G) on a test image (in png or jpeg format), execute [`eval.py`](eval.py) by running:  
       `python3 eval.py <test data directory> <repaired model directory>`.
       
-E.g., `python3 eval.py  data/Lab3/cl/test.h5  models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
+E.g.
+
+`python3 eval.py  data/Lab3/cl/test.h5  lab3/models/bd_net.h5 REPAIRED_MODELS/bd_repaired_10.h5`. 
       
 This will output:
 
